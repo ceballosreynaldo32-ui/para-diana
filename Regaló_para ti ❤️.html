@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Flores Amarillas 🌼</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{background:#020b0d;font-family:Georgia,serif}
+.sky{position:fixed;inset:0;overflow:hidden;background:
+radial-gradient(circle at 50% 55%,rgba(20,80,62,.24),transparent 40%),
+linear-gradient(#01080a,#031416 62%,#020b0b)}
+.stars{position:absolute;inset:-10%;background-image:
+radial-gradient(circle,rgba(255,255,255,.9) 0 1.15px,transparent 1.8px),
+radial-gradient(circle,rgba(255,235,160,.72) 0 1px,transparent 1.7px);
+background-size:88px 105px,157px 171px;background-position:5px 9px,38px 61px;
+animation:stars 35s linear infinite}
+@keyframes stars{to{background-position:85px 65px,118px 121px}}
+
+.shooting{position:absolute;width:130px;height:2px;border-radius:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),#fff);
+box-shadow:0 0 7px #fff;transform:rotate(32deg);opacity:0;
+animation:shoot 6.5s linear infinite}
+.shooting:after{content:"";position:absolute;right:0;top:50%;width:6px;height:6px;
+border-radius:50%;transform:translateY(-50%);background:#fff;box-shadow:0 0 9px 3px #fff}
+.s1{top:14%;left:4%;animation-delay:.8s}.s2{top:28%;left:64%;animation-delay:3.2s}
+.s3{top:44%;left:-5%;animation-delay:5.4s}.s4{top:8%;left:49%;animation-delay:7s}
+@keyframes shoot{0%,63%{opacity:0;transform:translate(0,0) rotate(32deg)}
+67%{opacity:1}80%{opacity:1;transform:translate(235px,145px) rotate(32deg)}
+82%,100%{opacity:0;transform:translate(290px,180px) rotate(32deg)}}
+
+.glow{position:absolute;width:520px;height:520px;left:50%;top:53%;
+transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,213,57,.08),transparent 68%);
+animation:pulse 4.5s ease-in-out infinite}
+@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.07);opacity:.7}}
+
+.title{position:absolute;z-index:30;top:5%;left:0;right:0;text-align:center;
+color:#fff4a0;font-size:clamp(23px,5vw,38px);letter-spacing:1px;
+text-shadow:0 0 12px rgba(255,214,50,.5)}
+.subtitle{position:absolute;z-index:30;top:12%;left:0;right:0;text-align:center;
+color:rgba(255,255,255,.72);font-size:clamp(11px,2.5vw,15px);letter-spacing:3px}
+
+.bouquet{position:absolute;left:50%;bottom:-2%;width:min(500px,100vw);height:min(720px,91vh);
+transform:translateX(-50%);animation:breeze 5s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes breeze{0%,100%{transform:translateX(-50%) rotate(-.55deg)}
+50%{transform:translateX(-50%) rotate(.55deg)}}
+svg{width:100%;height:100%;overflow:visible}
+
+.stem{fill:none;stroke:url(#stem);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;
+transform-box:fill-box;transform-origin:50% 100%;animation:stem 4.2s ease-in-out infinite}
+.stem:nth-of-type(2n){animation-duration:4.7s}
+@keyframes stem{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(2deg)}}
+
+
+/* Floración inicial: las flores brotan y luego pasan al movimiento de brisa */
+.flowerGroup{
+  transform-box:fill-box;
+  transform-origin:50% 100%;
+  animation:
+    bloom 2s cubic-bezier(.22,.75,.25,1) both,
+    flower 4s ease-in-out 2s infinite;
+}
+.flowerGroup:nth-of-type(2n){
+  animation-duration:2.25s,4.6s;
+}
+.flowerGroup:nth-of-type(3n){
+  animation-duration:2.5s,3.7s;
+}
+@keyframes bloom{
+  0%{
+    opacity:0;
+    transform:translateY(20px) scale(.62) rotate(-4deg);
+    filter:blur(1.5px) drop-shadow(0 0 0 rgba(255,214,44,0));
+  }
+  45%{
+    opacity:.72;
+    transform:translateY(3px) scale(.94) rotate(1.5deg);
+    filter:blur(.35px) drop-shadow(0 0 10px rgba(255,214,44,.42));
+  }
+  72%{
+    opacity:1;
+    transform:translateY(-1px) scale(1.015) rotate(-.5deg);
+    filter:drop-shadow(0 0 13px rgba(255,214,44,.62));
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1) rotate(0deg);
+    filter:drop-shadow(0 0 9px rgba(255,214,44,.5));
+  }
+}
+
+@keyframes flower{0%,100%{transform:rotate(-2.5deg) translateY(0)}50%{transform:rotate(3.2deg) translateY(-2px)}}
+50%{transform:rotate(3.2deg) translateY(-2px)}}
+
+.petal{stroke:rgba(190,130,10,.22);stroke-width:1;filter:drop-shadow(0 0 8px rgba(255,214,44,.72));transform-box:fill-box;transform-origin:50% 100%;animation:petalBloom 1.15s cubic-bezier(.2,.8,.25,1) both}
+@keyframes petalBloom{0%{opacity:.35;transform:scaleY(.55) scaleX(.82)}60%{opacity:.9;transform:scaleY(1.025) scaleX(1.01)}100%{opacity:1;transform:scaleY(1) scaleX(1)}}
+.leaf{fill:url(#leaf);transform-box:fill-box;transform-origin:0 50%;animation:leaf 4.4s ease-in-out infinite}
+@keyframes leaf{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(4deg)}}
+
+.ribbon{position:absolute;z-index:11;left:50%;bottom:18%;width:105px;height:35px;
+transform:translateX(-50%);background:#c99174;border-radius:50%}
+.ribbon:before,.ribbon:after{content:"";position:absolute;top:-11px;width:61px;height:72px;background:#dda88b;
+clip-path:polygon(50% 0,100% 20%,78% 70%,50% 100%,42% 50%,0 22%)}
+.ribbon:before{right:64%;transform:rotate(15deg)}.ribbon:after{left:64%;transform:scaleX(-1) rotate(15deg)}
+
+@media(max-height:680px){.bouquet{height:94vh}.title{top:2%}.subtitle{top:8%}}
+</style>
+</head>
+<body>
+<div class="sky">
+<div class="stars"></div><div class="shooting s1"></div><div class="shooting s2"></div>
+<div class="shooting s3"></div><div class="shooting s4"></div><div class="glow"></div>
+<div class="title">Flores Amarillas 🌼</div>
+<div class="subtitle">un pequeño detalle para ti</div>
+
+<div class="bouquet">
+<svg viewBox="0 0 500 720">
+<defs>
+<linearGradient id="gold" x1="0" x2="1"><stop stop-color="#f7bd22"/><stop offset=".5" stop-color="#ffed62"/><stop offset="1" stop-color="#f0b51c"/></linearGradient>
+<linearGradient id="gold2" x1="0" x2="1"><stop stop-color="#ffd33c"/><stop offset=".5" stop-color="#fff277"/><stop offset="1" stop-color="#f2bd25"/></linearGradient>
+<linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8ab447"/><stop offset=".7" stop-color="#326631"/><stop offset="1" stop-color="#28532a"/></linearGradient>
+<linearGradient id="stem" x1="0" x2="1"><stop stop-color="#285b2d"/><stop offset=".5" stop-color="#70a43d"/><stop offset="1" stop-color="#285a2d"/></linearGradient>
+<linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8e3cf"/><stop offset=".55" stop-color="#efd3ba"/><stop offset="1" stop-color="#dfbfa3"/></linearGradient>
+</defs>
+
+<!-- Tallos principales: curvos y flexibles -->
+<path class="stem" d="M250 600 C250 500 248 350 250 190"/>
+<path class="stem" d="M245 600 C230 500 205 390 185 275"/>
+<path class="stem" d="M258 600 C275 500 300 385 315 245"/>
+<path class="stem" d="M235 600 C210 520 160 440 125 365"/>
+<path class="stem" d="M270 600 C300 510 355 435 390 335"/>
+<path class="stem" d="M225 600 C190 540 145 510 105 455"/>
+<path class="stem" d="M285 600 C320 540 380 515 425 455"/>
+
+<!-- Hojas -->
+<g>
+<path class="leaf" d="M225 535 C185 510 155 510 125 522 C155 548 192 552 225 535Z"/>
+<path class="leaf" d="M238 475 C205 438 175 430 145 435 C170 466 204 480 238 475Z"/>
+<path class="leaf" d="M275 515 C315 480 345 474 375 482 C350 510 315 523 275 515Z"/>
+<path class="leaf" d="M290 445 C325 408 355 402 383 411 C360 438 327 452 290 445Z"/>
+<path class="leaf" d="M195 575 C160 552 132 553 105 563 C132 589 165 593 195 575Z"/>
+<path class="leaf" d="M325 575 C365 548 395 548 425 560 C397 588 360 591 325 575Z"/>
+<path class="leaf" d="M220 400 C192 370 178 345 177 318 C205 337 223 366 220 400Z"/>
+<path class="leaf" d="M305 385 C330 350 350 334 378 327 C365 357 340 380 305 385Z"/>
+</g>
+
+<!-- Cada flor incluye su propio tramo final de tallo: se mueven juntas -->
+<g class="flowerGroup"><path class="stem" d="M250 300 C250 270 250 230 250 205"/>
+<g transform="translate(215 135)">
+<path class="petal" fill="url(#gold)" d="M35 70 C12 68 3 51 7 31 C11 14 22 6 35 19 C40 7 53 4 62 17 C74 3 87 14 89 32 C91 53 77 70 58 74 C49 76 41 74 35 70Z"/>
+<path class="petal" fill="url(#gold2)" d="M35 70 C29 51 30 27 36 12 C41 3 53 6 58 18 C62 33 60 56 54 70 C48 75 41 74 35 70Z"/>
+<ellipse cx="42" cy="28" rx="5" ry="22" fill="rgba(255,250,175,.65)"/>
+</g></g>
+
+<g class="flowerGroup"><path class="stem" d="M240 520 C220 440 200 350 183 285"/>
+<g transform="translate(148 225)">
+<path class="petal" fill="url(#gold)" d="M35 70 C12 68 3 51 7 31 C11 14 22 6 35 19 C40 7 53 4 62 17 C74 3 87 14 89 32 C91 53 77 70 58 74 C49 76 41 74 35 70Z"/>
+<path class="petal" fill="url(#gold2)" d="M35 70 C29 51 30 27 36 12 C41 3 53 6 58 18 C62 33 60 56 54 70 C48 75 41 74 35 70Z"/>
+<ellipse cx="42" cy="28" rx="5" ry="22" fill="rgba(255,250,175,.65)"/>
+</g></g>
+
+<g class="flowerGroup"><path class="stem" d="M260 520 C278 430 298 345 315 250"/>
+<g transform="translate(280 195)">
+<path class="petal" fill="url(#gold)" d="M35 70 C12 68 3 51 7 31 C11 14 22 6 35 19 C40 7 53 4 62 17 C74 3 87 14 89 32 C91 53 77 70 58 74 C49 76 41 74 35 70Z"/>
+<path class="petal" fill="url(#gold2)" d="M35 70 C29 51 30 27 36 12 C41 3 53 6 58 18 C62 33 60 56 54 70 C48 75 41 74 35 70Z"/>
+<ellipse cx="42" cy="28" rx="5" ry="22" fill="rgba(255,250,175,.65)"/>
+</g></g>
+
+<g class="flowerGroup"><path class="stem" d="M230 565 C190 500 150 430 125 365"/>
+<g transform="translate(90 310)">
+<path class="petal" fill="url(#gold)" d="M35 70 C12 68 3 51 7 31 C11 14 22 6 35 19 C40 7 53 4 62 17 C74 3 87 14 89 32 C91 53 77 70 58 74 C49 76 41 74 35 70Z"/>
+<path class="petal" fill="url(#gold2)" d="M35 70 C29 51 30 27 36 12 C41 3 53 6 58 18 C62 33 60 56 54 70 C48 75 41 74 35 70Z"/>
+<ellipse cx="42" cy="28" rx="5" ry="22" fill="rgba(255,250,175,.65)"/>
+</g></g>
+
+<g class="flowerGroup"><path class="stem" d="M275 570 C305 505 355 430 390 335"/>
+<g transform="translate(355 280)">
+<path class="petal" fill="url(#gold)" d="M35 70 C12 68 3 51 7 31 C11 14 22 6 35 19 C40 7 53 4 62 17 C74 3 87 14 89 32 C91 53 77 70 58 74 C49 76 41 74 35 70Z"/>
+<path class="petal" fill="url(#gold2)" d="M35 70 C29 51 30 27 36 12 C41 3 53 6 58 18 C62 33 60 56 54 70 C48 75 41 74 35 70Z"/>
+<ellipse cx="42" cy="28" rx="5" ry="22" fill="rgba(255,250,175,.65)"/>
+</g></g>
+
+<g class="flowerGroup"><path class="stem" d="M245 600 C235 555 215 520 205 480"/>
+<g transform="translate(170 415)">
+<path class="petal" fill="url(#gold)" d="M35 70 C12 68 3 51 7 31 C11 14 22 6 35 19 C40 7 53 4 62 17 C74 3 87 14 89 32 C91 53 77 70 58 74 C49 76 41 74 35 70Z"/>
+<path class="petal" fill="url(#gold2)" d="M35 70 C29 51 30 27 36 12 C41 3 53 6 58 18 C62 33 60 56 54 70 C48 75 41 74 35 70Z"/>
+<ellipse cx="42" cy="28" rx="5" ry="22" fill="rgba(255,250,175,.65)"/>
+</g></g>
+
+<g class="flowerGroup"><path class="stem" d="M275 600 C295 555 315 525 335 485"/>
+<g transform="translate(300 420)">
+<path class="petal" fill="url(#gold)" d="M35 70 C12 68 3 51 7 31 C11 14 22 6 35 19 C40 7 53 4 62 17 C74 3 87 14 89 32 C91 53 77 70 58 74 C49 76 41 74 35 70Z"/>
+<path class="petal" fill="url(#gold2)" d="M35 70 C29 51 30 27 36 12 C41 3 53 6 58 18 C62 33 60 56 54 70 C48 75 41 74 35 70Z"/>
+<ellipse cx="42" cy="28" rx="5" ry="22" fill="rgba(255,250,175,.65)"/>
+</g></g>
+
+<!-- Envoltorio y lazo -->
+<path d="M112 555 L388 555 L350 690 L250 720 L150 690Z" fill="url(#paper)" filter="drop-shadow(0 8px 8px rgba(0,0,0,.28))"/>
+<path d="M112 555 L250 670 L388 555" fill="rgba(255,255,255,.18)"/>
+<path d="M155 570 L220 555 L190 692" fill="rgba(255,255,255,.2)"/>
+<path d="M345 570 L280 555 L310 692" fill="rgba(170,120,85,.1)"/>
+<g>
+<ellipse cx="250" cy="630" rx="53" ry="18" fill="#c58a70"/>
+<path d="M215 628 L174 605 L190 660 L225 642Z" fill="#dda487"/>
+<path d="M285 628 L326 605 L310 660 L275 642Z" fill="#dda487"/>
+<path d="M250 620 L274 634 L250 650 L226 634Z" fill="#d49a7c"/>
+<path d="M225 642 L195 680 L230 660 L238 640Z" fill="#d49a7c"/>
+<path d="M275 642 L305 680 L270 660 L262 640Z" fill="#d49a7c"/>
+</g>
+</svg>
+</div>
+</div>
+</body>
+</html>
